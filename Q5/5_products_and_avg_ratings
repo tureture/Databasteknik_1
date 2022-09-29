@@ -4,4 +4,4 @@ from ( SELECT Reviews.Prod_title, Description, Price, VAT, Discount, avg(Stars) 
 FROM Product
 inner join Reviews on Reviews.Prod_title = Product.Prod_title
 Group by Prod_title ) as T1
-where Prod_title in (select HP_Prod_title As T3 from HasProducts where HP_Dep_title="Pets"); 
+where Prod_title in (select HP_Prod_title from HasProducts where HP_Dep_title="Pets"); 
