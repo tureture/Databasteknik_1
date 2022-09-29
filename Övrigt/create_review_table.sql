@@ -1,0 +1,12 @@
+USE ht22_1_project_group_14;
+CREATE TABLE Reviews
+(
+ReviewID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Stars INT(1) NOT NULL CHECK(Stars >= 0 AND Stars <= 5),
+Review_text TEXT NULL,
+Title VARCHAR(64) NOT NULL,
+Personnr INT(12) NOT NULL,
+FOREIGN KEY (Title) REFERENCES Product(Title),
+FOREIGN KEY (Personnr) 	REFERENCES Users(Personnr)
+);
+SHOW TABLES;
