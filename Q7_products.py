@@ -28,4 +28,5 @@ print()
 # Set new discount
 mycursor.execute("UPDATE Product SET Discount=" + new_discount + " WHERE Prod_title ='" + product + "'")
 
+mydb.commit()
 mydb.close()
