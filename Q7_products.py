@@ -25,12 +25,15 @@ if myresult != []:
   # Print current discount, take input for new discount
   print("Product: " + product, "\t Current discount: " + str(myresult[0][1]))
   print("Input new discount: ")
-  new_discount = input()
+
   # Set new discount
   try:
+    new_discount = input()
+    if float(new_discount) < 0 or float(new_discount) > 100: # Check if discount is valid
+      raise Exception("Discount must be between 0 and 100")
     mycursor.execute("UPDATE Product SET Discount=" + new_discount + " WHERE Prod_title ='" + product + "'")
-  except:
-    print("Invalid input")
+  except Exception as e:
+    print(e)
 else:
   print("Product not found")
 
