@@ -1,3 +1,4 @@
+from datetime import MAXYEAR
 import mysql.connector
 
 group_number="14" #FILL IN YOUR GROUP NUMBER
@@ -19,14 +20,17 @@ mycursor = mydb.cursor()
 mycursor.execute("SELECT Prod_title, Discount FROM Product WHERE Prod_title ='" + product + "'")
 myresult = mycursor.fetchall()
 
-# Print current discount, take input for new discount
-print("Product: " + product, "\t Current discount: " + str(myresult[0][1]))
-print("Input new discount: ")
-new_discount = input()
-print()
+# Check if product exists
+if myresult != []:
+  # Print current discount, take input for new discount
+  print("Product: " + product, "\t Current discount: " + str(myresult[0][1]))
+  print("Input new discount: ")
+  new_discount = input()
+  # Set new discount
+  mycursor.execute("UPDATE Product SET Discount=" + new_discount + " WHERE Prod_title ='" + product + "'")
+else:
+  print("Product not found")
 
-# Set new discount
-mycursor.execute("UPDATE Product SET Discount=" + new_discount + " WHERE Prod_title ='" + product + "'")
 
 mydb.commit()
 mydb.close()
