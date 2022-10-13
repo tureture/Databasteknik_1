@@ -27,7 +27,10 @@ if myresult != []:
   print("Input new discount: ")
   new_discount = input()
   # Set new discount
-  mycursor.execute("UPDATE Product SET Discount=" + new_discount + " WHERE Prod_title ='" + product + "'")
+  try:
+    mycursor.execute("UPDATE Product SET Discount=" + new_discount + " WHERE Prod_title ='" + product + "'")
+  except:
+    print("Invalid input")
 else:
   print("Product not found")
 
