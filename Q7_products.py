@@ -1,4 +1,3 @@
-from datetime import MAXYEAR
 import mysql.connector
 
 group_number="14" #FILL IN YOUR GROUP NUMBER
